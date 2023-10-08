@@ -1,4 +1,6 @@
 import random
+from datetime import datetime
+
 title_words = ["Love", "Sunset", "Dream", "Ocean", "Sky", "Heart", "Moon", "Stars"]
 artist_names = ["HarmonyWeaver", "MelodyForge", "RhythmCraft", "MusicMaker", "TuneMaster"]
 genres = ["Pop", "Rock", "Electronic", "Hip Hop", "Jazz", "Classical"]
@@ -9,7 +11,13 @@ class Song:
         self.title = title
         self.artist = artist
         self.genre = genre
-        self.release_date = release_date
+
+        # Converte a data de lançamento em um objeto datetime
+        release_date_obj = datetime.strptime(release_date, "%Y-%m-%d")
+        
+        # Formata a data no formato de dia/mês/ano
+        self.release_date = release_date_obj.strftime("%d/%m/%Y")
+        
         self.rating = rating
 
     def __str__(self):
@@ -33,4 +41,9 @@ class Song:
 
 # # Imprime as músicas aleatórias
 # for song in random_songs:
-#     print(song)
+#     print(f"Title: {song.title}")
+#     print(f"Artist: {song.artist}")
+#     print(f"Genre: {song.genre}")
+#     print(f"Release Date: {song.release_date}")
+#     print(f"Rating: {song.rating}")
+#     print()
